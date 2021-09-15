@@ -5,6 +5,7 @@ ENV PHRASE_VERSION 2.1.6
 RUN apk --no-cache --update --virtual build-dependencies add git make g++ \
     && rm -rf /var/cache/apk/*
 
+# isntall phrase cli
 ADD https://github.com/phrase/phrase-cli/releases/download/${PHRASE_VERSION}/phrase_linux_amd64 /usr/local/bin/phrase
 RUN chmod +x /usr/local/bin/phrase
 
@@ -16,3 +17,6 @@ RUN apk add --no-cache \
     && pip3 install \
         awscli==1.14.5 s3cmd==2.0.1 \
     && rm -rf /var/cache/apk/*
+
+# Install grunt
+RUN npm install -g grunt-cli
